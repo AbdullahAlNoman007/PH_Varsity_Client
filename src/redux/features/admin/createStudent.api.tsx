@@ -36,9 +36,25 @@ const academicManagementApi = baseApi.injectEndpoints({
                 url: `/students/${id}`,
                 method: "GET"
             })
+        }),
+        updateStudent: builder.mutation({
+            query: (data) => {
+                let id;
+                let student;
+                if (data) {
+                    id = data?.id;
+                    student = data.studentData
+                }
+                return {
+                    url: `/students/${id}`,
+                    method: "PATCH",
+                    body: student
+                }
+
+            }
         })
 
     }),
 });
 
-export const { useAddStudentMutation, useGetAllStudentQuery, useGetAStudentQuery } = academicManagementApi
+export const { useAddStudentMutation, useGetAllStudentQuery, useGetAStudentQuery, useUpdateStudentMutation } = academicManagementApi

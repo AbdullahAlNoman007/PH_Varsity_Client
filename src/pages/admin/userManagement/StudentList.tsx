@@ -39,7 +39,9 @@ const columns: TableColumnsType<TtableData> = [
                     <Link to={`/admin/student-data/${item.key}`}>
                         <Button>Details</Button>
                     </Link>
-                    <Button>Update</Button>
+                    <Link to={`/admin/student-update/${item.key}`}>
+                        <Button>Update</Button>
+                    </Link>
                     <Button>Block</Button>
                 </Space >
             )

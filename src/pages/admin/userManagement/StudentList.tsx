@@ -53,7 +53,7 @@ const StudentList = () => {
     const [page, setPage] = useState(1)
     const { data: studentData, isFetching } =
         useGetAllStudentQuery([
-            { name: 'limit', value: 2 },
+            { name: 'limit', value: 10 },
             { name: 'page', value: page },
             { name: 'sort', value: 'id' },
             ...params

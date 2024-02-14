@@ -31,8 +31,14 @@ const academicManagementApi = baseApi.injectEndpoints({
                 meta: res.meta
             })
         }),
+        getAStudent: builder.query({
+            query: (id) => ({
+                url: `/students/${id}`,
+                method: "GET"
+            })
+        })
 
     }),
 });
 
-export const { useAddStudentMutation, useGetAllStudentQuery } = academicManagementApi
+export const { useAddStudentMutation, useGetAllStudentQuery, useGetAStudentQuery } = academicManagementApi

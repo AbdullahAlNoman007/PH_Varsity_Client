@@ -71,25 +71,26 @@ export interface LocalGuardian {
 }
 
 export interface Tstudent {
-  _id: string
-  id: string
-  user: User
-  name: Name
-  gender: string
-  email: string
-  contactNo: string
-  emergencyContactNo: string
-  bloogGroup: string
-  presentAddress: string
-  permanentAddress: string
-  guardian: Guardian
-  localGuardian: LocalGuardian
-  profileImg: string
-  admissionSemester: TAcademicSemester
-  isDeleted: boolean
-  academicDepartment: TDepartment
-  academicFaculty: TacademicFaculty
-  fullName: string
+  _id: string;
+  id: string;
+  user: User;
+  name: Name;
+  gender: string;
+  email: string;
+  dateOfBirth: string;
+  contactNo: string;
+  emergencyContactNo: string;
+  bloogGroup: string;
+  presentAddress: string;
+  permanentAddress: string;
+  guardian: Guardian;
+  localGuardian: LocalGuardian;
+  profileImg: string;
+  admissionSemester: TAcademicSemester;
+  isDeleted: boolean;
+  academicDepartment: TDepartment;
+  academicFaculty: TacademicFaculty;
+  fullName: string;
 }
 
 

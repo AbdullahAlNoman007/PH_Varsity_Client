@@ -48,8 +48,8 @@ const CreateStudent = () => {
   const { data: department, isLoading } = useGetAllDepartmentQuery(undefined)
   console.log(department);
 
-  const [addStudent, { error }] = useAddStudentMutation()
-  console.log(error);
+  const [addStudent] = useAddStudentMutation()
+
 
 
   const semesterOption = aSemester?.data?.map((item) => ({

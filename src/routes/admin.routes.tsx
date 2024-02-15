@@ -14,6 +14,9 @@ import UpdateStudent from '../pages/admin/userManagement/student/UpdateStudent';
 import FacultyList from '../pages/admin/userManagement/faculty/FacultyList';
 import FacultyDetails from '../pages/admin/userManagement/faculty/FacultyDetails';
 import FacultyUpdate from '../pages/admin/userManagement/faculty/FacultyUpdate';
+import AdminList from '../pages/admin/userManagement/admin/AdminList';
+import AdminDetails from '../pages/admin/userManagement/admin/AdminDetails';
+import BlockAdmin from '../pages/admin/userManagement/admin/BlockAdmin';
 
 export const adminPaths = [
   {
@@ -100,7 +103,20 @@ export const adminPaths = [
         name: 'Create Admin',
         path: 'create-admin',
         element: <CreateAdmin />,
-      }
+      },
+      {
+        name: 'Admins',
+        path: 'admins-data',
+        element: <AdminList />,
+      },
+      {
+        path: 'admin-data/:adminID',
+        element: <AdminDetails />,
+      },
+      {
+        path: 'admin-update/:adminID',
+        element: <BlockAdmin />,
+      },
     ],
   },
 ];

@@ -1,12 +1,18 @@
 import { Button, Pagination, Space, Table } from "antd";
 import type { TableColumnsType, TableProps } from 'antd';
-import { Tfilter, Tstudent } from "../../../types/academicManagement.type";
 import { useState } from "react";
-import { useGetAllStudentQuery } from "../../../redux/features/admin/createStudent.api";
 import { Link } from "react-router-dom";
-import Block from "./BlockModal";
+import { Tfilter } from "../../../../types/academicManagement.type";
+import { useGetAllFacultyMemberQuery } from "../../../../redux/features/admin/createFaculty.api";
 
-type TtableData = Pick<Tstudent, 'id' | 'fullName' | 'email' | 'contactNo'>
+type TtableData = {
+    key: string;
+    _id: string;
+    fullName: string;
+    email: string;
+    contactNo: string;
+    academicDepartment: string;
+}
 
 
 const columns: TableColumnsType<TtableData> = [
@@ -14,11 +20,6 @@ const columns: TableColumnsType<TtableData> = [
         title: 'Name',
         key: 'name',
         dataIndex: 'fullName',
-    },
-    {
-        title: 'Roll No.',
-        key: 'id',
-        dataIndex: 'id',
     },
     {
         title: 'Email',
@@ -31,19 +32,23 @@ const columns: TableColumnsType<TtableData> = [
         dataIndex: 'contactNo',
     },
     {
+        title: 'Department',
+        key: 'academicDepartment',
+        dataIndex: 'academicDepartment',
+    },
+    {
         title: "Action",
         key: 'x',
         render: (item) => {
-
             return (
                 <Space>
-                    <Link to={`/admin/student-data/${item.key}`}>
+                    <Link to={`/admin/faculty-data/${item.key}`}>
                         <Button>Details</Button>
                     </Link>
-                    <Link to={`/admin/student-update/${item.key}`}>
+                    <Link to={`/admin/faculty-update/${item.key}`}>
                         <Button>Update</Button>
                     </Link>
-                    <Block id={item.key as string} />
+                    <Button>Delete</Button>
                 </Space >
             )
         },
@@ -51,25 +56,25 @@ const columns: TableColumnsType<TtableData> = [
     }
 ];
 
-const StudentList = () => {
+const FacultyList = () => {
     const [params, setParams] = useState<Tfilter[]>([])
     const [page, setPage] = useState(1)
-    const { data: studentData, isFetching } =
-        useGetAllStudentQuery([
+    const { data: facultyData, isFetching } =
+        useGetAllFacultyMemberQuery([
             { name: 'limit', value: 10 },
             { name: 'page', value: page },
             { name: 'sort', value: 'id' },
             ...params
         ])
 
-    const metaData = studentData?.meta
-    const tableData = studentData?.data?.map(({ _id, fullName, id, email, contactNo }) => ({
+    const metaData = facultyData?.meta
+    const tableData = facultyData?.data?.map(({ _id, fullName, email, contactNo, academicDepartment }) => ({
         key: _id,
         _id,
         fullName,
-        id,
         email,
-        contactNo
+        contactNo,
+        academicDepartment: academicDepartment.name
     }))
 
     const onChange: TableProps<TtableData>['onChange'] = (_pagination, filters, _sorter, extra) => {
@@ -89,4 +94,4 @@ const StudentList = () => {
     );
 };
 
-export default StudentList;
+export default FacultyList;

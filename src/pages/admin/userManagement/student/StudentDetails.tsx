@@ -1,7 +1,8 @@
 import { useParams } from "react-router-dom";
-import { useGetAStudentQuery } from "../../../redux/features/admin/createStudent.api";
 import { Card, Divider, Flex } from "antd";
-import { Tstudent } from "../../../types/academicManagement.type";
+import { useGetAStudentQuery } from "../../../../redux/features/admin/createStudent.api";
+import { Tstudent } from "../../../../types/academicManagement.type";
+
 
 const StudentDetails = () => {
     const { studentID } = useParams()

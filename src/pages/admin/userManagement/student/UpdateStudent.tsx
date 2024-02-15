@@ -1,17 +1,16 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { useGetAStudentQuery, useUpdateStudentMutation } from "../../../redux/features/admin/createStudent.api";
-import { Tstudent } from "../../../types/academicManagement.type";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
-import { useGetAllSemestersQuery } from "../../../redux/features/admin/academicManagement.api";
-import { useGetAllDepartmentQuery } from "../../../redux/features/admin/academicDepartment.api";
 import { Button, Col, Divider, Row } from "antd";
-import PHForm from "../../../components/form/PHForm";
-import PHInput from "../../../components/form/PHInput";
-import PHSelect from "../../../components/form/PHSelect";
-import PHDatePicker from "../../../components/form/PHDatePicker";
-import { bloodOptions, gendersOptions } from "../../../constants/global";
-
+import { useGetAllSemestersQuery } from "../../../../redux/features/admin/academicManagement.api";
+import { useGetAllDepartmentQuery } from "../../../../redux/features/admin/academicDepartment.api";
+import PHForm from "../../../../components/form/PHForm";
+import PHInput from "../../../../components/form/PHInput";
+import PHSelect from "../../../../components/form/PHSelect";
+import PHDatePicker from "../../../../components/form/PHDatePicker";
+import { bloodOptions, gendersOptions } from "../../../../constants/global";
+import { useGetAStudentQuery, useUpdateStudentMutation } from "../../../../redux/features/admin/createStudent.api";
+import { Tstudent } from "../../../../types/academicManagement.type";
 
 const UpdateStudent = () => {
     const { studentID } = useParams()

@@ -22,13 +22,7 @@ export type TacademicFaculty = {
 export interface TDepartment {
   _id: string;
   name: string;
-  academicFaculty: {
-    _id: string;
-    name: string;
-    createdAt: string;
-    updatedAt: string;
-    __v: number;
-  };
+  academicFaculty: string;
   createdAt: string;
   updatedAt: string;
 }
@@ -87,6 +81,27 @@ export interface Tstudent {
   localGuardian: LocalGuardian;
   profileImg: string;
   admissionSemester: TAcademicSemester;
+  isDeleted: boolean;
+  academicDepartment: TDepartment;
+  academicFaculty: TacademicFaculty;
+  fullName: string;
+}
+
+export interface Tfaculty {
+  _id: string;
+  id: string;
+  user: User;
+  designation: string
+  name: Name
+  gender: string
+  email: string
+  dateOfBirth: string
+  contactNo: string
+  emergencyContactNo: string
+  bloogGroup: string
+  presentAddress: string
+  permanentAddress: string
+  profileImg: string;
   isDeleted: boolean;
   academicDepartment: TDepartment;
   academicFaculty: TacademicFaculty;

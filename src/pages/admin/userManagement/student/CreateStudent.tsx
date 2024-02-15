@@ -1,14 +1,15 @@
 import { Controller, FieldValues, SubmitHandler } from "react-hook-form";
-import PHForm from "../../../components/form/PHForm";
-import PHInput from "../../../components/form/PHInput";
 import { Button, Col, Divider, Form, Input, Row } from "antd";
-import PHSelect from "../../../components/form/PHSelect";
-import { bloodOptions, gendersOptions } from "../../../constants/global";
-import PHDatePicker from "../../../components/form/PHDatePicker";
-import { useGetAllSemestersQuery } from "../../../redux/features/admin/academicManagement.api";
-import { useAddStudentMutation } from "../../../redux/features/admin/createStudent.api";
 import { toast } from "sonner";
-import { useGetAllDepartmentQuery } from "../../../redux/features/admin/academicDepartment.api";
+import { useGetAllSemestersQuery } from "../../../../redux/features/admin/academicManagement.api";
+import { useGetAllDepartmentQuery } from "../../../../redux/features/admin/academicDepartment.api";
+import { useAddStudentMutation } from "../../../../redux/features/admin/createStudent.api";
+import PHForm from "../../../../components/form/PHForm";
+import PHInput from "../../../../components/form/PHInput";
+import PHSelect from "../../../../components/form/PHSelect";
+import PHDatePicker from "../../../../components/form/PHDatePicker";
+import { bloodOptions, gendersOptions } from "../../../../constants/global";
+
 
 
 const defaultValue = {
@@ -46,7 +47,6 @@ const defaultValue = {
 const CreateStudent = () => {
   const { data: aSemester, isLoading: sLoading } = useGetAllSemestersQuery(undefined)
   const { data: department, isLoading } = useGetAllDepartmentQuery(undefined)
-  console.log(department);
 
   const [addStudent] = useAddStudentMutation()
 

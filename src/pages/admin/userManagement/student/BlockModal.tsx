@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Button, Modal } from 'antd';
-import { useDeleteStudentMutation } from '../../../redux/features/admin/createStudent.api';
+import { useDeleteStudentMutation } from '../../../../redux/features/admin/createStudent.api';
+
+
 
 const Block = ({ id }: { id: string }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);

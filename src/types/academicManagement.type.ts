@@ -107,6 +107,24 @@ export interface Tfaculty {
   academicFaculty: TacademicFaculty;
   fullName: string;
 }
+export interface Tadmin {
+  _id: string;
+  id: string;
+  user: User;
+  designation: string
+  name: Name
+  gender: string
+  email: string
+  dateOfBirth: string
+  contactNo: string
+  emergencyContactNo: string
+  bloogGroup: string
+  presentAddress: string
+  permanentAddress: string
+  profileImg: string;
+  isDeleted: boolean;
+  fullName: string;
+}
 
 
 export type Tfilter = { name: string, value: boolean | React.Key }

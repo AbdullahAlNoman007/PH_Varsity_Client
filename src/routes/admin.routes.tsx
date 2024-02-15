@@ -16,7 +16,7 @@ import FacultyDetails from '../pages/admin/userManagement/faculty/FacultyDetails
 import FacultyUpdate from '../pages/admin/userManagement/faculty/FacultyUpdate';
 import AdminList from '../pages/admin/userManagement/admin/AdminList';
 import AdminDetails from '../pages/admin/userManagement/admin/AdminDetails';
-import BlockAdmin from '../pages/admin/userManagement/admin/BlockAdmin';
+import UpdateAdmin from '../pages/admin/userManagement/admin/UpdateAdmin';
 
 export const adminPaths = [
   {
@@ -115,7 +115,7 @@ export const adminPaths = [
       },
       {
         path: 'admin-update/:adminID',
-        element: <BlockAdmin />,
+        element: <UpdateAdmin />,
       },
     ],
   },

@@ -1,9 +1,10 @@
 import { Button, Modal } from "antd";
 import { useState } from "react";
+import { useDeleteAdminMutation } from "../../../../redux/features/admin/createAdmin.api";
 
 const BlockAdmin = ({ id }: { id: string }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    //const [deleteFacultyMember] = useDeleteFacultyMemberMutation()
+    const [deleteAdmin] = useDeleteAdminMutation()
 
 
     const showModal = () => {
@@ -12,7 +13,7 @@ const BlockAdmin = ({ id }: { id: string }) => {
 
     const handleOk = () => {
         setIsModalOpen(false);
-        //deleteFacultyMember(id);
+        deleteAdmin(id);
 
     };
 

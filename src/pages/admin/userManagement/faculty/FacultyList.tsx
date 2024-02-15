@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Tfilter } from "../../../../types/academicManagement.type";
 import { useGetAllFacultyMemberQuery } from "../../../../redux/features/admin/createFaculty.api";
+import Delete from "./BlockFaculty";
 
 type TtableData = {
     key: string;
@@ -48,7 +49,7 @@ const columns: TableColumnsType<TtableData> = [
                     <Link to={`/admin/faculty-update/${item.key}`}>
                         <Button>Update</Button>
                     </Link>
-                    <Button>Delete</Button>
+                    <Delete id={item.key} />
                 </Space >
             )
         },

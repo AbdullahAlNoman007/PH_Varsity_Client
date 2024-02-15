@@ -19,7 +19,6 @@ const facultyManagementApi = baseApi.injectEndpoints({
                         params.append(item.name, item.value as string)
                     });
                 }
-
                 return {
                     url: '/faculties',
                     method: "GET",
@@ -43,8 +42,9 @@ const facultyManagementApi = baseApi.injectEndpoints({
             query: (data) => {
                 let id;
                 let faculty;
+                console.log(data);
                 if (data) {
-                    id = data?.id;
+                    id = data?._id;
                     faculty = data.facultyData
                 }
                 return {
@@ -53,7 +53,8 @@ const facultyManagementApi = baseApi.injectEndpoints({
                     body: faculty
                 }
 
-            }
+            },
+            invalidatesTags: ['faculty']
         }),
         deleteFacultyMember: builder.mutation({
             query: (id) => ({

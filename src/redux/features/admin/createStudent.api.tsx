@@ -26,6 +26,8 @@ const academicManagementApi = baseApi.injectEndpoints({
                     params
                 }
             },
+            providesTags: ['student'],
+
             transformResponse: (res: TResponseRedux<Tstudent[]>) => ({
                 data: res.data,
                 meta: res.meta
@@ -52,9 +54,16 @@ const academicManagementApi = baseApi.injectEndpoints({
                 }
 
             }
+        }),
+        deleteStudent: builder.mutation({
+            query: (id) => ({
+                url: `/students/${id}`,
+                method: 'DELETE'
+            }),
+            invalidatesTags: ['student']
         })
 
     }),
 });
 
-export const { useAddStudentMutation, useGetAllStudentQuery, useGetAStudentQuery, useUpdateStudentMutation } = academicManagementApi
+export const { useAddStudentMutation, useGetAllStudentQuery, useGetAStudentQuery, useUpdateStudentMutation, useDeleteStudentMutation } = academicManagementApi

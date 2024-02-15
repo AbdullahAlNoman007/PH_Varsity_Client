@@ -4,6 +4,7 @@ import { Tfilter, Tstudent } from "../../../types/academicManagement.type";
 import { useState } from "react";
 import { useGetAllStudentQuery } from "../../../redux/features/admin/createStudent.api";
 import { Link } from "react-router-dom";
+import Block from "./BlockModal";
 
 type TtableData = Pick<Tstudent, 'id' | 'fullName' | 'email' | 'contactNo'>
 
@@ -42,7 +43,7 @@ const columns: TableColumnsType<TtableData> = [
                     <Link to={`/admin/student-update/${item.key}`}>
                         <Button>Update</Button>
                     </Link>
-                    <Button>Block</Button>
+                    <Block id={item.key as string} />
                 </Space >
             )
         },

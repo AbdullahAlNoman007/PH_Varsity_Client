@@ -19,6 +19,21 @@ export const bloods = ['A+', 'B+', 'AB+', 'O+', 'A-', 'B-', 'AB-', 'O-']
 
 export const designations = ['Lecture', 'Assistant professor', 'Associate professor', 'Professor', 'Professor emeritus']
 
+export const statusOptions = [
+  {
+    value: "UPCOMING",
+    label: "Upcoming"
+  },
+  {
+    value: "ONGOING",
+    label: "Ongoing"
+  },
+  {
+    value: "ENDED",
+    label: "Ended"
+  },
+]
+
 export const monthOptions = monthNames.map((item) => ({
   value: item,
   label: item,

@@ -17,6 +17,12 @@ import FacultyUpdate from '../pages/admin/userManagement/faculty/FacultyUpdate';
 import AdminList from '../pages/admin/userManagement/admin/AdminList';
 import AdminDetails from '../pages/admin/userManagement/admin/AdminDetails';
 import UpdateAdmin from '../pages/admin/userManagement/admin/UpdateAdmin';
+import SemesterRegistration from '../pages/admin/courseManagement/SemesterRegistration';
+import RegisteredSemester from '../pages/admin/courseManagement/RegisteredSemester';
+import CreateCourse from '../pages/admin/courseManagement/CreateCourse';
+import Courses from '../pages/admin/courseManagement/Courses';
+import OfferedCourses from '../pages/admin/courseManagement/OfferedCourses';
+import CreateOfferedCourse from '../pages/admin/courseManagement/CreateOfferedCourse';
 
 export const adminPaths = [
   {
@@ -62,7 +68,6 @@ export const adminPaths = [
   {
     name: 'User Management',
     children: [
-      ,
       {
         name: 'Create Student',
         path: 'create-student',
@@ -119,6 +124,41 @@ export const adminPaths = [
       },
     ],
   },
+  {
+    name: "Course Management",
+    children: [
+      {
+        name: "Semester Registration",
+        path: "semester-registration",
+        element: <SemesterRegistration />
+      },
+      {
+        name: "Registered Semester",
+        path: "registered-semester",
+        element: <RegisteredSemester />
+      },
+      {
+        name: "Create Course",
+        path: "create-course",
+        element: <CreateCourse />
+      },
+      {
+        name: "Courses",
+        path: "courses",
+        element: <Courses />
+      },
+      {
+        name: "Offered Course",
+        path: "offered-course",
+        element: <CreateOfferedCourse />
+      },
+      {
+        name: "Offered Courses",
+        path: "offered-courses",
+        element: <OfferedCourses />
+      },
+    ]
+  }
 ];
 
 // export const adminSidebarItems = adminPaths.reduce(

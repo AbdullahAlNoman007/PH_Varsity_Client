@@ -2,8 +2,9 @@ import { Button, Dropdown, MenuProps, Pagination, Table, TableColumnsType, Table
 import { useState } from "react";
 import { TsemesterRegistration } from "../../../types";
 import { Tfilter } from "../../../types/academicManagement.type";
-import { useGetAllSemesterRegistrationQuery } from "../../../redux/features/admin/CourseManagement.api";
+import { useGetAllSemesterRegistrationQuery, useUpdateSemesterRegistrationMutation } from "../../../redux/features/admin/CourseManagement.api";
 import moment from "moment";
+import { toast } from "sonner";
 
 type TtableData = Pick<TsemesterRegistration, 'status' | 'startDate' | 'endDate'>
 
@@ -28,14 +29,22 @@ const RegisteredSemester = () => {
     const [params, setParams] = useState<Tfilter[]>([])
     const [page, setPage] = useState(1)
     const [key, setKey] = useState()
+    const [updateSemesterRegistration, { error }] = useUpdateSemesterRegistrationMutation()
+    console.log(error);
 
-    const handleMenuClick: MenuProps['onClick'] = (e) => {
-        const updateData = {
+    const handleMenuClick: MenuProps['onClick'] = async (e) => {
+        const body = {
             status: e.key,
         }
-
-        console.log(updateData);
-
+        const toastId = toast.loading('Updating admin...')
+        try {
+            const res = await updateSemesterRegistration({ body, key }).unwrap()
+            if (res.success) {
+                toast.success(res.message, { id: toastId })
+            }
+        } catch (error: any) {
+            toast.error(error?.data?.message, { id: toastId })
+        }
     };
 
     const menuProps = {

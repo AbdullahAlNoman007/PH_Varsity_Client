@@ -1,10 +1,8 @@
-import { Button, Dropdown, Pagination, Table, TableColumnsType, TableProps, Tag } from "antd";
+import { Table, TableColumnsType, TableProps, } from "antd";
 import { Tcourses } from "../../../types";
 import { Tfilter } from "../../../types/academicManagement.type";
-import moment from "moment";
 import { useGetAllCoursesQuery } from "../../../redux/features/admin/CourseManagement.api";
-
-
+import AssignModal from "./AssignModal";
 
 type TtableData = Pick<Tcourses, "title" | "code">
 
@@ -27,9 +25,7 @@ const Courses = () => {
             title: "Action",
             key: 'x',
             render: (item) => {
-                return (
-                    <Button>Assign Faculty</Button>
-                )
+                return <AssignModal item={item.key} />
             },
             width: '1%'
         }
@@ -56,5 +52,6 @@ const Courses = () => {
     );
 
 };
+
 
 export default Courses;

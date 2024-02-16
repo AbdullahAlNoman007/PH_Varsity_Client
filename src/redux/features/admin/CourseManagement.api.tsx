@@ -1,4 +1,4 @@
-import { TResponseRedux, TsemesterRegistration } from "../../../types";
+import { TResponseRedux, Tcourses, TsemesterRegistration } from "../../../types";
 import { Tfilter } from "../../../types/academicManagement.type";
 import { baseApi } from "../../api/baseApi";
 
@@ -39,8 +39,36 @@ const courseManagement = baseApi.injectEndpoints({
                 body: data.body
             }),
             invalidatesTags: ['semester']
+        }),
+        getAllCourses: builder.query({
+            query: (args) => {
+                const params = new URLSearchParams();
+                if (args) {
+                    args.forEach((item: Tfilter) => {
+                        params.append(item.name, item.value as string)
+                    });
+                }
+                return {
+                    url: "/courses",
+                    method: "GET",
+                    params
+                }
+            },
+            transformResponse: (res: TResponseRedux<Tcourses[]>) => ({
+                data: res.data,
+                meta: res.meta
+            }),
+            providesTags: ['course']
+        }),
+        addNewCourses: builder.mutation({
+            query: (data) => ({
+                url: '/courses/create-course',
+                method: 'POST',
+                body: data
+            }),
+            invalidatesTags: ['course']
         })
     })
 })
 
-export const { useAddSemesterRegistrationMutation, useGetAllSemesterRegistrationQuery, useUpdateSemesterRegistrationMutation } = courseManagement
+export const { useAddSemesterRegistrationMutation, useGetAllSemesterRegistrationQuery, useUpdateSemesterRegistrationMutation, useGetAllCoursesQuery, useAddNewCoursesMutation } = courseManagement

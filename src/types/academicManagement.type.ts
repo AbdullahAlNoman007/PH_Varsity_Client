@@ -107,6 +107,13 @@ export interface Tfaculty {
   academicFaculty: TacademicFaculty;
   fullName: string;
 }
+
+export type TassignFacutly = {
+  _id: string,
+  __v: number,
+  course: string,
+  faculties: Tfaculty[]
+}
 export interface Tadmin {
   _id: string;
   id: string;

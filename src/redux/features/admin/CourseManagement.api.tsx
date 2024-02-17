@@ -1,5 +1,5 @@
 import { TResponseRedux, Tcourses, TsemesterRegistration } from "../../../types";
-import { Tfilter } from "../../../types/academicManagement.type";
+import { TassignFacutly, Tfilter } from "../../../types/academicManagement.type";
 import { baseApi } from "../../api/baseApi";
 
 const courseManagement = baseApi.injectEndpoints({
@@ -74,8 +74,24 @@ const courseManagement = baseApi.injectEndpoints({
                 method: 'PUT',
                 body: data.body
             })
+        }),
+        getAssignFacultyMember: builder.query({
+            query: (id) => ({
+                url: `/courses/${id}/get-faculties`,
+                method: "GET"
+            }),
+            transformResponse: (res: TResponseRedux<TassignFacutly>) => ({
+                data: res.data
+            }),
+        }),
+        addOfferCourse: builder.mutation({
+            query: (data) => ({
+                url: '/offered-courses/create-offered-course',
+                method: "POST",
+                body: data
+            })
         })
     })
 })
 
-export const { useAddSemesterRegistrationMutation, useGetAllSemesterRegistrationQuery, useUpdateSemesterRegistrationMutation, useGetAllCoursesQuery, useAddNewCoursesMutation, useAssignFacultyMutation } = courseManagement
+export const { useAddSemesterRegistrationMutation, useGetAllSemesterRegistrationQuery, useUpdateSemesterRegistrationMutation, useGetAllCoursesQuery, useAddNewCoursesMutation, useAssignFacultyMutation, useGetAssignFacultyMemberQuery, useAddOfferCourseMutation } = courseManagement

@@ -14,14 +14,14 @@ import { useAddFacultyMemberMutation } from "../../../../redux/features/admin/cr
 const defaultValue = {
   designation: "Lecturer",
   name: {
-    firstName: "Mridul ",
-    middleName: "Das",
-    lastName: "Rahman"
+    firstName: "Sanaf ",
+    middleName: " Abdud",
+    lastName: " Daiyan"
   },
   gender: "male",
   bloogGroup: "A+",
 
-  email: "faculty3@gmail.com",
+  email: "gari@gmail.com",
   contactNo: "123",
   emergencyContactNo: "123",
   presentAddress: "123 Main St, Cityville",

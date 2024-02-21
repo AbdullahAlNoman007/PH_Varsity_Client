@@ -1,8 +1,8 @@
 import { Button, Layout } from 'antd';
 import Sidebar from './Sidebar';
-import { useAppDispatch } from '../../redux/hooks';
-import { logout } from '../../redux/features/auth/authSlice';
 import { Outlet } from 'react-router-dom';
+import { useAppDispatch } from '../../redux/hook';
+import { logout } from '../../redux/features/auth/authSlicer';
 const { Header, Content } = Layout;
 
 const MainLayout = () => {

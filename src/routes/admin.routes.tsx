@@ -1,28 +1,16 @@
-import AdminDashboard from '../pages/admin/AdminDashboard';
-import CreateAdmin from '../pages/admin/userManagement/admin/CreateAdmin';
-import CreateFaculty from '../pages/admin/userManagement/faculty/CreateFaculty';
-import CreateStudent from '../pages/admin/userManagement/student/CreateStudent';
-import AcademicDepartment from '../pages/admin/academicManagement/AcademicDepartment';
-import AcademicFaculty from '../pages/admin/academicManagement/AcademicFaculty';
-import AcademicSemester from '../pages/admin/academicManagement/AcademicSemester';
-import CreateAcademicDepartment from '../pages/admin/academicManagement/CreateAcademicDepartment';
-import CreateAcademicFaculty from '../pages/admin/academicManagement/CreateAcademicFaculty';
-import CreateAcademicSemester from '../pages/admin/academicManagement/CreateAcademicSemester';
-import StudentList from '../pages/admin/userManagement/student/StudentList';
-import StudentDetails from '../pages/admin/userManagement/student/StudentDetails';
-import UpdateStudent from '../pages/admin/userManagement/student/UpdateStudent';
-import FacultyList from '../pages/admin/userManagement/faculty/FacultyList';
-import FacultyDetails from '../pages/admin/userManagement/faculty/FacultyDetails';
-import FacultyUpdate from '../pages/admin/userManagement/faculty/FacultyUpdate';
-import AdminList from '../pages/admin/userManagement/admin/AdminList';
-import AdminDetails from '../pages/admin/userManagement/admin/AdminDetails';
-import UpdateAdmin from '../pages/admin/userManagement/admin/UpdateAdmin';
-import SemesterRegistration from '../pages/admin/courseManagement/SemesterRegistration';
-import RegisteredSemester from '../pages/admin/courseManagement/RegisteredSemester';
-import CreateCourse from '../pages/admin/courseManagement/CreateCourse';
-import Courses from '../pages/admin/courseManagement/Courses';
-import OfferedCourses from '../pages/admin/courseManagement/OfferedCourses';
-import CreateOfferedCourse from '../pages/admin/courseManagement/CreateOfferedCourse';
+import AdminDashboard from "../pages/Admin/AdminDashboard";
+import AddPhone from "../pages/Admin/productManagement/AddPhone";
+import AllPhone from "../pages/Admin/productManagement/AllPhone";
+import DeletePhone from "../pages/Admin/productManagement/DeletePhone";
+import PhoneFiltering from "../pages/Admin/productManagement/PhoneFiltering";
+import SaleHistory from "../pages/Admin/productManagement/SaleHistory";
+import AllManager from "../pages/Admin/userManagement/AllManager";
+import AllSeller from "../pages/Admin/userManagement/AllSeller";
+import AllSuperAdmin from "../pages/Admin/userManagement/AllSuperAdmin";
+import CreateManager from "../pages/Admin/userManagement/CreateManager";
+import CreateSeller from "../pages/Admin/userManagement/CreateSeller";
+import CreateSuperAdmin from "../pages/Admin/userManagement/CreateSuperAdmin";
+
 
 export const adminPaths = [
   {
@@ -31,200 +19,68 @@ export const adminPaths = [
     element: <AdminDashboard />,
   },
   {
-    name: 'Academic Management',
-    children: [
-      {
-        name: 'Create A. Semester',
-        path: 'create-academic-semester',
-        element: <CreateAcademicSemester />,
-      },
-      {
-        name: 'Academic Semester',
-        path: 'academic-semester',
-        element: <AcademicSemester />,
-      },
-      {
-        name: 'Create A. Faculty',
-        path: 'create-academic-faculty',
-        element: <CreateAcademicFaculty />,
-      },
-      {
-        name: 'Academic Faculty',
-        path: 'academic-faculty',
-        element: <AcademicFaculty />,
-      },
-      {
-        name: 'Create A. Department',
-        path: 'create-academic-department',
-        element: <CreateAcademicDepartment />,
-      },
-      {
-        name: 'Academic Department',
-        path: 'academic-department',
-        element: <AcademicDepartment />,
-      },
-    ],
-  },
-  {
     name: 'User Management',
     children: [
       {
-        name: 'Create Student',
-        path: 'create-student',
-        element: <CreateStudent />,
+        name: 'Create Super Admin',
+        path: 'create-super-admin',
+        element: <CreateSuperAdmin />,
       },
       {
-        name: 'Students',
-        path: 'students-data',
-        element: <StudentList />,
+        name: 'Super Admins',
+        path: 'super-admin-data',
+        element: <AllSuperAdmin />,
       },
       {
-        path: 'student-data/:studentID',
-        element: <StudentDetails />,
+        name: 'Create Manager',
+        path: 'create-manager',
+        element: <CreateManager />,
       },
       {
-        path: 'student-update/:studentID',
-        element: <UpdateStudent />,
+        name: 'Managers',
+        path: 'manager-data',
+        element: <AllManager />,
       },
       {
-        name: 'Create Faculty',
-        path: 'create-faculty',
-        element: <CreateFaculty />,
+        name: 'Create Seller',
+        path: 'create-seller',
+        element: <CreateSeller />,
       },
       {
-        name: 'Faculties',
-        path: 'faculties-data',
-        element: <FacultyList />,
-      },
-      {
-        path: 'faculty-data/:id',
-        element: <FacultyDetails />,
-      },
-      {
-        path: 'faculty-update/:facultyID',
-        element: <FacultyUpdate />,
-      },
-      {
-        name: 'Create Admin',
-        path: 'create-admin',
-        element: <CreateAdmin />,
-      },
-      {
-        name: 'Admins',
-        path: 'admins-data',
-        element: <AdminList />,
-      },
-      {
-        path: 'admin-data/:adminID',
-        element: <AdminDetails />,
-      },
-      {
-        path: 'admin-update/:adminID',
-        element: <UpdateAdmin />,
-      },
+        name: 'Seller',
+        path: 'sellers-data',
+        element: <AllSeller />,
+      }
     ],
   },
   {
-    name: "Course Management",
+    name: "Product Management",
     children: [
       {
-        name: "Semester Registration",
-        path: "semester-registration",
-        element: <SemesterRegistration />
+        name: "Add Phone",
+        path: "add-phone",
+        element: <AddPhone />
       },
       {
-        name: "Registered Semester",
-        path: "registered-semester",
-        element: <RegisteredSemester />
+        name: "All Phone",
+        path: "all-phone",
+        element: <AllPhone />
       },
       {
-        name: "Create Course",
-        path: "create-course",
-        element: <CreateCourse />
+        name: "Delete Phone",
+        path: "delete-phone",
+        element: <DeletePhone />
       },
       {
-        name: "Courses",
-        path: "courses",
-        element: <Courses />
+        name: "Phone Filtering",
+        path: "phone-filtering",
+        element: <PhoneFiltering />
       },
       {
-        name: "Offered Course",
-        path: "offered-course",
-        element: <CreateOfferedCourse />
-      },
-      {
-        name: "Offered Courses",
-        path: "offered-courses",
-        element: <OfferedCourses />
-      },
+        name: "Sale History",
+        path: "sale-history",
+        element: <SaleHistory />
+      }
     ]
   }
 ];
-
-// export const adminSidebarItems = adminPaths.reduce(
-//   (acc: TSidebarItem[], item) => {
-//     if (item.path && item.name) {
-//       acc.push({
-//         key: item.name,
-//         label: <NavLink to={`/admin/${item.path}`}>{item.name}</NavLink>,
-//       });
-//     }
-
-//     if (item.children) {
-//       acc.push({
-//         key: item.name,
-//         label: item.name,
-//         children: item.children.map((child) => ({
-//           key: child.name,
-//           label: <NavLink to={`/admin/${child.path}`}>{child.name}</NavLink>,
-//         })),
-//       });
-//     }
-
-//     return acc;
-//   },
-//   []
-// );
-
-//* Programatical way
-
-// export const adminRoutes = adminPaths.reduce((acc: TRoute[], item) => {
-//   if (item.path && item.element) {
-//     acc.push({
-//       path: item.path,
-//       element: item.element,
-//     });
-//   }
-
-//   if (item.children) {
-//     item.children.forEach((child) => {
-//       acc.push({
-//         path: child.path,
-//         element: child.element,
-//       });
-//     });
-//   }
-
-//   return acc;
-// }, []);
-
-//! Hard coded way
-
-// export const adminPaths = [
-//   {
-//     path: 'dashboard',
-//     element: <AdminDashboard />,
-//   },
-//   {
-//     path: 'create-student',
-//     element: <CreateStudent />,
-//   },
-//   {
-//     path: 'create-admin',
-//     element: <CreateAdmin />,
-//   },
-//   {
-//     path: 'create-faculty',
-//     element: <CreateFaculty />,
-//   },
-// ];

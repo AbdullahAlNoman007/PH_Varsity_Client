@@ -1,18 +1,19 @@
 import { Layout, Menu } from 'antd';
 import { sidebarItemsGenerator } from '../../utils/sidebarItemsGenerator';
 import { adminPaths } from '../../routes/admin.routes';
-import { facultyPaths } from '../../routes/faculty.routes';
-import { studentPaths } from '../../routes/student.routes';
-import { useAppSelector } from '../../redux/hooks';
-import { TUser, selectCurrentUser, useCurrentToken } from '../../redux/features/auth/authSlice';
 import { verifyToken } from '../../utils/verifyToken';
+import { useAppSelector } from '../../redux/hook';
+import { useCurrentToken } from '../../redux/features/auth/authSlicer';
+import { Tuser } from '../../types/program.type';
+import { ManagerPaths } from '../../routes/manager.routes';
+import { sellerPaths } from '../../routes/seller.routes';
 
 const { Sider } = Layout;
 
 const userRole = {
-  ADMIN: 'admin',
-  FACULTY: 'faculty',
-  STUDENT: 'student',
+  SUPERADMIN: 'superAdmin',
+  MANAGER: 'manager',
+  SELLER: 'seller',
 };
 
 const Sidebar = () => {
@@ -20,20 +21,20 @@ const Sidebar = () => {
   let user;
 
   if (token) {
-    user = verifyToken(token) as TUser
+    user = verifyToken(token) as Tuser
   }
 
   let sidebarItems;
 
   switch (user!.role) {
-    case userRole.ADMIN:
-      sidebarItems = sidebarItemsGenerator(adminPaths, userRole.ADMIN);
+    case userRole.SUPERADMIN:
+      sidebarItems = sidebarItemsGenerator(adminPaths, userRole.SUPERADMIN);
       break;
-    case userRole.FACULTY:
-      sidebarItems = sidebarItemsGenerator(facultyPaths, userRole.FACULTY);
+    case userRole.MANAGER:
+      sidebarItems = sidebarItemsGenerator(ManagerPaths, userRole.MANAGER);
       break;
-    case userRole.STUDENT:
-      sidebarItems = sidebarItemsGenerator(studentPaths, userRole.STUDENT);
+    case userRole.SELLER:
+      sidebarItems = sidebarItemsGenerator(sellerPaths, userRole.SELLER);
       break;
 
     default:
@@ -55,7 +56,7 @@ const Sidebar = () => {
           alignItems: 'center',
         }}
       >
-        <h1>PH Uni</h1>
+        <h1>Smart-Phone</h1>
       </div>
       <Menu
         theme="dark"

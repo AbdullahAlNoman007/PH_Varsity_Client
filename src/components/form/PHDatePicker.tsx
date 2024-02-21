@@ -1,4 +1,4 @@
-import { DatePicker, Form, Input } from 'antd';
+import { DatePicker, Form } from 'antd';
 import { Controller } from 'react-hook-form';
 
 type TdatePicker = {

@@ -1,4 +1,5 @@
-import { TRoute, TUserPath } from '../types';
+import { TRoute, TUserPath } from "../types/sidebarItem.type";
+
 
 export const routeGenerator = (items: TUserPath[]) => {
   const routes = items.reduce((acc: TRoute[], item) => {

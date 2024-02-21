@@ -1,65 +1,59 @@
 import { Button, Row } from 'antd';
 import { FieldValues } from 'react-hook-form';
 import { useLoginMutation } from '../redux/features/auth/authApi';
-import { useAppDispatch } from '../redux/hooks';
-import { TUser, setUser } from '../redux/features/auth/authSlice';
+
 import { verifyToken } from '../utils/verifyToken';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import PHForm from '../components/form/PHForm';
 import PHInput from '../components/form/PHInput';
+import { useAppDispatch } from '../redux/hook';
+import { setUser } from '../redux/features/auth/authSlicer';
+import { Tuser } from '../types/program.type';
 
 const Login = () => {
-  const navigate = useNavigate();
-  const dispatch = useAppDispatch();
-  // const { register, handleSubmit } = useForm({
-  //   defaultValues: {
-  //     userId: 'A-0002',
-  //     password: 'admin123',
-  //   },
-  // });
+    const navigate = useNavigate();
+    const dispatch = useAppDispatch();
 
-  const defaultValues = {
-    userId: 'A-0001',
-    password: 'ASD123!@#asd',
-  };
+    const defaultValues = {
+        password: 'ASD123!@#asd',
+    };
 
-  const [login] = useLoginMutation();
+    const [login, { error }] = useLoginMutation();
 
-  const onSubmit = async (data: FieldValues) => {
-    const toastId = toast.loading('Logging in');
+    console.log(error);
 
-    try {
-      const userInfo = {
-        id: data.userId,
-        password: data.password,
-      };
-      const res = await login(userInfo).unwrap();
-      const user = verifyToken(res.data.accessToken) as TUser;
-      dispatch(setUser({ user: user, token: res.data.accessToken }));
-      toast.success('Logged in', { id: toastId, duration: 2000 });
-      if (res.data.needsPasswordChange) {
-        navigate(`/change-password`)
-      }
-      else {
-        navigate(`/${user.role}/dashboard`);
-      }
-    } catch (err: any) {
-      console.log(err);
+    const onSubmit = async (data: FieldValues) => {
+        const toastId = toast.loading('Logging in');
 
-      toast.error(err?.data?.message, { id: toastId, duration: 2000 });
-    }
-  };
+        try {
+            const userInfo = {
+                email: data.email,
+                password: data.password,
+            };
+            const res = await login(userInfo).unwrap();
 
-  return (
-    <Row justify="center" align="middle" style={{ height: '100vh' }}>
-      <PHForm onSubmit={onSubmit} defaultValues={defaultValues}>
-        <PHInput type="text" name="userId" label="ID:" />
-        <PHInput type="password" name="password" label="Password" />
-        <Button htmlType="submit">Login</Button>
-      </PHForm>
-    </Row>
-  );
+            if (res.success) {
+                const user = verifyToken(res.data.token) as Tuser;
+                dispatch(setUser({ user: user, token: res.data.token }));
+                toast.success('Logged in', { id: toastId, duration: 2000 });
+                navigate(`/${user.role}/dashboard`);
+            }
+        } catch (err: any) {
+            console.log(err);
+            toast.error(err?.data?.message, { id: toastId, duration: 2000 });
+        }
+    };
+
+    return (
+        <Row justify="center" align="middle" style={{ height: '100vh' }}>
+            <PHForm onSubmit={onSubmit} defaultValues={defaultValues}>
+                <PHInput type="text" name="email" label="Email" />
+                <PHInput type="password" name="password" label="Password" />
+                <Button htmlType="submit">Login</Button>
+            </PHForm>
+        </Row>
+    );
 };
 
 export default Login;

@@ -1,8 +1,9 @@
 import { ReactNode } from 'react';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { TUser, logout, useCurrentToken } from '../../redux/features/auth/authSlice';
 import { Navigate } from 'react-router-dom';
 import { verifyToken } from '../../utils/verifyToken';
+import { useAppDispatch, useAppSelector } from '../../redux/hook';
+import { logout, useCurrentToken } from '../../redux/features/auth/authSlicer';
+import { Tuser } from '../../types/program.type';
 
 type TprotectRoute = {
   children: ReactNode;
@@ -19,7 +20,7 @@ const ProtectedRoute = ({ children, role }: TprotectRoute) => {
   }
 
   if (token) {
-    user = verifyToken(token) as TUser
+    user = verifyToken(token) as Tuser
   }
 
   if (role !== undefined && role !== user?.role) {
